@@ -16,10 +16,10 @@ export function disabledButtons() {
    return {type: DISABLE_BUTTONS}
 }
 
-export function changeTheme(newTheme) {
+export function changeTheme(currentTheme) {
    return {
       type: CHANGE_THEME,
-      payload: newTheme
+      payload: currentTheme
    }
 }
 
@@ -28,6 +28,16 @@ export function asyncIncrement() {
       dispatch(disabledButtons())
       setTimeout(() => {
          dispatch(increment())
+         dispatch(enableButtons())
+      }, 1500)
+   }
+}
+
+export function asyncDecrement() {
+   return function(dispatch) {
+      dispatch(disabledButtons())
+      setTimeout(() => {
+         dispatch(decrement())
          dispatch(enableButtons())
       }, 1500)
    }
